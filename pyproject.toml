@@ -1,11 +1,25 @@
 [tool.poetry]
 name = "beancount-multitool"
-version = "0.1.0"
+version = "0.2.0"
 description = "A CLI tool that converts financial data to Beancount files"
-authors = ["Rick Lan"]
+authors = ["Rick Lan <rlan@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/rlan/beancount-multitool"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Framework :: Pytest",
+  "Intended Audience :: Financial and Insurance Industry",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Natural Language :: Japanese",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Office/Business :: Financial :: Accounting",
+  "Topic :: Office/Business :: Financial :: Investment",
+  "Topic :: Text Processing :: General",
+  "Topic :: Utilities",
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"

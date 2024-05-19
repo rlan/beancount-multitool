@@ -1,7 +1,10 @@
 # Beancount Multitool
 
 ![Tests badge](https://github.com/rlan/beancount-multitool/actions/workflows/tests.yml/badge.svg)
-![python version required](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2Frlan%2Fbeancount-multitool%2Fmain%2Fpyproject.toml)
+![pypi version](https://img.shields.io/pypi/v/beancount-multitool
+)
+![python version required](https://img.shields.io/pypi/pyversions/beancount-multitool
+)
 ![static coverage badge](https://img.shields.io/badge/Coverage-97%25-blue)
 
 Beancount Multitool is a command-line-interface (CLI) tool that converts financial data from financial institutions to Beancount files.
@@ -25,15 +28,25 @@ What these scripts __can not__ (yet) do:
 
 * Label transactions with different sub-accounts, e.g., `Expenses:JP:Food:Grocery` or `Expenses:JP:Food:Restaurant`.
 
+Installation:
+
+```sh
+pip install beancount-multitool
+```
+
 Usage:
 
+```sh
+bean-mt --help
+```
+
 ```txt
-$ bean-mt --help
 Usage: bean-mt [OPTIONS] NAME CONFIG DATA
 
   Read financial data and output a Beancount file.
 
-  NAME is the name of the financial institution, e.g. RakutenBank.
+  NAME is the name of the financial institution. See Note below for a list of
+  supported names.
 
   CONFIG is a .toml file with run-time configurations, e.g. config.toml.
 
@@ -43,6 +56,9 @@ Options:
   --output PATH  Resulting Beancount file
   --version      Show the version and exit.
   --help         Show this message and exit.
+
+  Note: supported names of financial institutions: ['ja_bank', 'rakuten_bank',
+  'rakuten_card', 'shinsei_bank']
 ```
 
 Example:
@@ -61,12 +77,6 @@ Workflow:
 config.toml:
 
 There is a default config.toml per financial institutions. Examples are in the test [data folder](./tests/data/).
-
-## Installation
-
-```sh
-pip install beancount-multitool
-```
 
 ## Requirements
 

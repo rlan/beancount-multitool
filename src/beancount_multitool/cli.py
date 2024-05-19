@@ -17,7 +17,7 @@ def validate_name(ctx, param, value):
     else:
         raise click.BadParameter(f"Name must be one of: {__INSTITUTIONS__}")
 
-@click.command()
+@click.command(epilog=f"Note: supported names of financial institutions: {__INSTITUTIONS__}")
 @click.argument('name', type=str, callback=validate_name)
 @click.argument('config', type=click.Path(exists=True))
 @click.argument('data', type=click.Path(exists=True))
@@ -26,16 +26,12 @@ def validate_name(ctx, param, value):
 def main(name: str, config, data, output):
     """Read financial data and output a Beancount file.
 
-    NAME is the name of the financial institution, e.g. RakutenBank.
+    NAME is the name of the financial institution. See Note below for a list of supported names.
 
     CONFIG is a .toml file with run-time configurations, e.g. config.toml.
 
     DATA is the raw financial data downloaded from NAME, e.g. input.csv.
     """
-    #click.echo(name)
-    #click.echo(data)
-    #click.echo(config)
-    #click.echo(output)
     if name == JABank.NAME:
         tool = JABank(config)
     elif name == RakutenBank.NAME:
