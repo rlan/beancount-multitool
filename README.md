@@ -1,6 +1,6 @@
 # Beancount Multitool
 
-![Test badge](https://github.com/rlan/beancount-multitool/actions/workflows/python-app.yml/badge.svg)
+![Tests badge](https://github.com/rlan/beancount-multitool/actions/workflows/tests.yml/badge.svg)
 ![python version required](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2Frlan%2Fbeancount-multitool%2Fmain%2Fpyproject.toml)
 ![static coverage badge](https://img.shields.io/badge/Coverage-97%25-blue)
 
