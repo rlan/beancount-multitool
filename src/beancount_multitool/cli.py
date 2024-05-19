@@ -1,5 +1,5 @@
-
 import click
+import sys
 
 # Get available finanicial institutions
 from beancount_multitool import __INSTITUTIONS__
@@ -42,3 +42,7 @@ def main(name: str, config, data, output):
         tool = ShinseiBank(config)
 
     tool.convert(data, output)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

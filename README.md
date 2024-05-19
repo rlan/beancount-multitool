@@ -1,10 +1,8 @@
 # Beancount Multitool
 
-![Tests badge](https://github.com/rlan/beancount-multitool/actions/workflows/tests.yml/badge.svg)
-![pypi version](https://img.shields.io/pypi/v/beancount-multitool
-)
-![python version required](https://img.shields.io/pypi/pyversions/beancount-multitool
-)
+[![Tests badge](https://github.com/rlan/beancount-multitool/actions/workflows/tests.yml/badge.svg)](https://github.com/rlan/beancount-multitool/actions/workflows/tests.yml)
+[![pypi version](https://img.shields.io/pypi/v/beancount-multitool)](https://pypi.org/project/beancount-multitool/)
+![python version required](https://img.shields.io/pypi/pyversions/beancount-multitool)
 ![static coverage badge](https://img.shields.io/badge/Coverage-97%25-blue)
 
 Beancount Multitool is a command-line-interface (CLI) tool that converts financial data from financial institutions to Beancount files.
@@ -76,7 +74,7 @@ Workflow:
 
 config.toml:
 
-There is a default config.toml per financial institutions. Examples are in the test [data folder](./tests/data/).
+There is a default config.toml per financial institutions. Examples are in the test [data folder](tests/data).
 
 ## Requirements
 
@@ -84,9 +82,9 @@ There is a default config.toml per financial institutions. Examples are in the t
 
 ## More
 
-* [Todo](./todo.md)
-* [Changelog](./changelog.md)
-* [Development](./development.md)
+* [Todo](todo.md)
+* [Changelog](changelog.md)
+* [Development](development.md)
 
 ## License
 

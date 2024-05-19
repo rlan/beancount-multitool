@@ -1,5 +1,6 @@
-#! /usr/bin/env python3
+# This file is needed for Pytest
+import sys
 
 if __name__ == "__main__":
     from .cli import main
-    main()
+    sys.exit(main())
