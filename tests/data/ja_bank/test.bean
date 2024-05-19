@@ -1,0 +1,8 @@
+
+2024-04-30 * "振込入金ｳｳ" ""  #NoCategory
+  Assets:JP:JABank
+  !  Income:JP:Unknown:JABank  -7000 JPY
+
+2024-04-30 * "出金NSS" ""  #NoCategory
+  Assets:JP:JABank
+  !  Expenses:JP:Unknown:JABank  4600 JPY

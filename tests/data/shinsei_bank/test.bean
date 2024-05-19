@@ -1,0 +1,8 @@
+
+2023-06-22 * "振込手数料" ""  #NoCategory
+  Assets:JP:ShinseiBank
+  !  Expenses:JP:Unknown:ShinseiBank  110 JPY
+
+2023-06-22 * "振込手数料" ""  #NoCategory
+  Assets:JP:ShinseiBank
+  !  Income:JP:Unknown:ShinseiBank  -110 JPY

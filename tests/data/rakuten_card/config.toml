@@ -1,0 +1,11 @@
+# Config for Rakuten Card
+
+currency = "JPY"
+source_account = "Liabilities:JP:RakutenCard"
+
+# Default transaction
+[default]
+account = "Expenses:JP:Unknown:RakutenCard"
+narration = ""
+tag = ["#NoCategory"]
+flag = "!"

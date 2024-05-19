@@ -1,0 +1,17 @@
+# Config for Shinsei Bank
+
+currency = "JPY"
+source_account = "Assets:JP:ShinseiBank"
+
+# Default transaction
+[default.credit]
+account = "Income:JP:Unknown:ShinseiBank"
+narration = ""
+tag = ["#NoCategory"]
+flag = "!"
+
+[default.debit]
+account = "Expenses:JP:Unknown:ShinseiBank"
+narration = ""
+tag = ["#NoCategory"]
+flag = "!"

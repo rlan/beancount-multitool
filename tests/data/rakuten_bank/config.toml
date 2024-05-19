@@ -1,0 +1,17 @@
+# Config for Rakuten Bank
+
+currency = "JPY"
+source_account = "Assets:JP:RakutenBank"
+
+# Default transaction
+[default.credit]
+account = "Income:JP:Unknown:RakutenBank"
+narration = ""
+tag = ["#NoCategory"]
+flag = "!"
+
+[default.debit]
+account = "Expenses:JP:Unknown:RakutenBank"
+narration = ""
+tag = ["#NoCategory"]
+flag = "!"
