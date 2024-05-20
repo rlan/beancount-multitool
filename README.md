@@ -5,7 +5,7 @@
 ![python version required](https://img.shields.io/pypi/pyversions/beancount-multitool)
 ![static coverage badge](https://img.shields.io/badge/Coverage-97%25-blue)
 
-Beancount Multitool is a command-line-interface (CLI) tool that converts financial data from financial institutions to Beancount files.
+[Beancount Multitool](https://github.com/rlan/beancount-multitool/) is a command-line-interface (CLI) tool that converts financial data from financial institutions to Beancount files.
 
 The following institutions are supported:
 

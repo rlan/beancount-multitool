@@ -1,5 +1,10 @@
 # Changelog
 
+0.3.0
+
+* Fix a hard-coded year bug in JABank.py.
+* Add ruff. Run formatter and linter.
+
 0.2.1
 
 * Update README for PyPi project page.

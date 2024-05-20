@@ -6,14 +6,13 @@ from .as_transaction import as_transaction
 
 
 class RakutenCard(Institution):
-    NAME = "rakuten_card" # used in cli.py and in tests
+    NAME = "rakuten_card"  # used in cli.py and in tests
 
     def __init__(self, config_file: str):
         # params
         self.config_file = config_file
-        
-        self.config = read_config(config_file)
 
+        self.config = read_config(config_file)
 
     def read_transaction(self, file_name: str) -> pd.DataFrame:
         """Read financial transactions into a Pandas DataFrame.
@@ -67,7 +66,6 @@ class RakutenCard(Institution):
         # print(df) # debug
         return df
 
-
     def write_bean(self, df: pd.DataFrame, file_name: str) -> None:
         """Write Beancount transactions to file
 
@@ -109,7 +107,6 @@ class RakutenCard(Institution):
                 # print(output) # debug
                 f.write(output)
             print(f"Written {file_name}")
-
 
     def convert(self, csv_file: str, bean_file: str):
         """Convert transactions in a CSV file to a Beancount file

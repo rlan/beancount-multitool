@@ -139,5 +139,5 @@ class JABank(Institution):
         None
         """
         year = datetime.now().year
-        df = self.read_transaction(csv_file, 2024)
+        df = self.read_transaction(csv_file, year)
         self.write_bean(df, bean_file)

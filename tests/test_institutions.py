@@ -37,7 +37,6 @@ def test_assets(assets):
 
 
 def test_institutions(assets):
-
     if assets["name"] == bcmt.JABank.NAME:
         app = bcmt.JABank(assets["config_file"])
     elif assets["name"] == bcmt.RakutenBank.NAME:
