@@ -1,0 +1,57 @@
+site_name: Beancount Multitool
+site_url: https://rlan.github.io/beancount-multitool
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.footer
+    - search.highlight
+    - content.action.view
+    - content.action.edit
+
+  # Color palette toggle
+  palette: 
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+#  - git-revision-date-localized:
+#      enable_creation_date: true
+  - offline
+#  - optimize
+  - search
+  - social
+
+nav:
+  - index.md
+  - getting-started/index.md
+  - examples/index.md
+  - Financial Institutions:
+    - institutions/index.md
+    - institutions/ja_bank.md
+    - institutions/rakuten_bank.md
+    - institutions/rakuten_card.md
+    - institutions/shinsei_bank.md
+    - institutions/new_bank.md
+  - Reference:
+    - reference/data_model.md
+
+repo_url: https://github.com/rlan/beancount-multitool
+repo_name: rlan/beancount-multitool
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2024 Rick Lan
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
