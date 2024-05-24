@@ -2,7 +2,7 @@ from beancount_multitool.get_value import get_value
 
 
 def test_get_value():
-    x = {"section": {"variable" : "value"}}
+    x = {"section": {"variable": "value"}}
 
     # okay
     assert get_value(x, "section", "variable") == "value"
@@ -14,7 +14,7 @@ def test_get_value():
         print(e)
         assert True
     else:
-        assert False
+        assert AssertionError
 
     # section does not exist
     try:
@@ -23,4 +23,4 @@ def test_get_value():
         print(e)
         assert True
     else:
-        assert False
+        assert AssertionError
