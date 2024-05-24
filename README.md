@@ -3,7 +3,7 @@
 [![Tests badge](https://github.com/rlan/beancount-multitool/actions/workflows/tests.yml/badge.svg)](https://github.com/rlan/beancount-multitool/actions/workflows/tests.yml)
 [![pypi version](https://img.shields.io/pypi/v/beancount-multitool)](https://pypi.org/project/beancount-multitool/)
 ![python version required](https://img.shields.io/pypi/pyversions/beancount-multitool)
-![static coverage badge](https://img.shields.io/badge/Coverage-97%25-blue)
+![static coverage badge](https://img.shields.io/badge/Coverage-89%25-blue)
 
 [Beancount Multitool](https://github.com/rlan/beancount-multitool/) is a command-line-interface (CLI) tool that converts financial data from financial institutions to Beancount files.
 
@@ -18,13 +18,15 @@ The following institutions are supported:
 What these scripts __can__ do:
 
 * Read raw CSV files downloaded from each institution's website.
-* Label debit and credit transactions to respective account types.
+* Label transactions with different sub-accounts, e.g., `Expenses:JP:Food:Grocery` or `Expenses:JP:Food:Restaurant`.
+  * Documentation is incoming.
+* Label unknown transactions to respective account types.
   * Debit: `Expenses:JP:Unknown:NameOfInstitution`
   * Credit: `Income:JP:Unknown:NameOfInstitution`
 
 What these scripts __can not__ (yet) do:
 
-* Label transactions with different sub-accounts, e.g., `Expenses:JP:Food:Grocery` or `Expenses:JP:Food:Restaurant`.
+* To be added.
 
 Installation:
 

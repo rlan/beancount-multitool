@@ -1,0 +1,17 @@
+# Credit mapping database for Shinsei Bank
+
+[default]
+regex = ""
+account = "Income:JP:Unknown:ShinseiBank"
+payee = "Unknown payee"
+narration = ""
+tags = ["#NoMatch"]
+flag = "!"
+
+[blank]
+regex = ""
+account = ""
+payee = ""
+narration = ""
+tags = []
+flag = ""

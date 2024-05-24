@@ -74,7 +74,7 @@ Similar to this [setup](https://github.com/Hasenpfote/python-poetry-example?tab=
 
   * Bump version
     * [pyproject.toml](pyproject.toml)
-    * [src/beancount_multitool/__version__.py](src/beancount_multitool/__version__.py)
+    * [src/beancount_multitool/\_\_version\_\_.py](src/beancount_multitool/__version__.py)
     * Update [changelog](changelog.md)
   * Run local tests and coverage.
     * Update coverage number in [README.md](README.md).

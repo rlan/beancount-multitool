@@ -31,7 +31,7 @@ def validate_name(ctx, param, value):
     help="Resulting Beancount file",
 )
 @click.version_option()
-def main(name: str, config, data, output):
+def main(name: str, config: str, data: str, output: str):
     """Read financial data and output a Beancount file.
 
     NAME is the name of the financial institution.
@@ -50,7 +50,7 @@ def main(name: str, config, data, output):
     elif name == ShinseiBank.NAME:
         tool = ShinseiBank(config)
 
-    tool.convert(data, output)
+    return tool.convert(data, output)
 
 
 if __name__ == "__main__":

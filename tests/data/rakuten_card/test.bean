@@ -1,4 +1,6 @@
 
-2019-09-07 * "ローソン" ""  #NoCategory
+2019-09-07 * "Unknown payee" ""  #NoMatch
+  memo: "ローソン"
+  user: "本人"
   Liabilities:JP:RakutenCard
   !  Expenses:JP:Unknown:RakutenCard  1051 JPY

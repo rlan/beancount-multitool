@@ -1,8 +1,12 @@
 import pandas as pd
+from pathlib import Path
 
 from .Institution import Institution
+from .MappingDatabase import MappingDatabase
 from .read_config import read_config
 from .as_transaction import as_transaction
+from .get_value import get_value
+from .get_beancount_config import get_beancount_config
 
 
 class RakutenCard(Institution):
@@ -11,8 +15,14 @@ class RakutenCard(Institution):
     def __init__(self, config_file: str):
         # params
         self.config_file = config_file
-
+        # attributes
         self.config = read_config(config_file)
+        self.beancount_config = get_beancount_config(self.config)
+        # Use basedir of config_file to read mapping database files
+        base_dir = Path(config_file).parent
+        debit_file = get_value(self.config, "database", "debit_mapping")
+        self.debit_file = str(base_dir / debit_file)
+        self.debit_db = MappingDatabase(self.debit_file)
 
     def read_transaction(self, file_name: str) -> pd.DataFrame:
         """Read financial transactions into a Pandas DataFrame.
@@ -31,31 +41,33 @@ class RakutenCard(Institution):
         print(f"Found {len(df.index)} transactions in {file_name}")
 
         # Rename column names to English.
+        # "利用日","利用店名・商品名","利用者","支払方法","利用金額","支払手数料","支払総額","10月支払金額","11月繰越残高","新規サイン"
+        # Lowercase names will be keyword arguments later.
         column_names = {
-            "利用日": "Date",
-            "利用店名・商品名": "Description",
-            # "利用者": "User",
+            "利用日": "date",
+            "利用店名・商品名": "memo",
+            "利用者": "user",
             # "支払方法": "Payment method",
             # "利用金額": "Amount",
             # "支払手数料": "Commission paid",
-            "支払総額": "Total",
+            "支払総額": "amount",
             # "新規サイン": "New sign",
         }
         df.rename(columns=column_names, inplace=True)
 
-        df["Date"] = pd.to_datetime(df["Date"], format="%Y/%m/%d")
+        df["date"] = pd.to_datetime(df["date"], format="%Y/%m/%d")
 
         # Remove rows with empty 支払総額 cell.
         # These are extra info such as name of ETC gate or currency exchange rate.
         # TODO record as metadata
-        extra = df.loc[pd.isnull(df["Total"])]
+        extra = df.loc[pd.isnull(df["amount"])]
         df.drop(extra.index, inplace=True)
         # Convert to int type because currency is JPY
-        df = df.astype({"Total": int})
+        df = df.astype({"amount": int})
 
         # Remove rows with zero 支払総額. These are refunds.
         # TODO record as metadata.
-        refund = df.loc[df["Total"] == 0]
+        refund = df.loc[df["amount"] == 0]
         df.drop(refund.index, inplace=True)
 
         # Reverse row order because the oldest transaction is on the bottom
@@ -80,33 +92,36 @@ class RakutenCard(Institution):
         -------
         None
         """
+        try:
+            with open(file_name, "w", encoding="utf-8") as f:
+                for row in df.index:
+                    date = df["date"][row]
+                    amount = df["amount"][row]
+                    memo = df["memo"][row]
+                    metadata = {
+                        "memo": memo,
+                        "user": df["user"][row],
+                    }
 
-        currency = self.config["currency"]
-        source_account = self.config["source_account"]
-        target_account = self.config["default"]["account"]
-        narration = self.config["default"]["narration"]
-        tag = self.config["default"]["tag"]
-        flag = self.config["default"]["flag"]
+                    accounts = self.debit_db.match(memo)
 
-        with open(file_name, "w", encoding="utf-8") as f:
-            for row in df.index:
-                date = df["Date"][row]
-                amount = df["Total"][row]
-                payee = df["Description"][row]
-                output = as_transaction(
-                    date,
-                    payee,
-                    narration,
-                    tag,
-                    source_account,
-                    target_account,
-                    amount,
-                    currency,
-                    flag,
-                )
-                # print(output) # debug
-                f.write(output)
-            print(f"Written {file_name}")
+                    account_metadata = {}
+                    for x in range(1, len(accounts)):
+                        account_metadata[f"match{x+1}"] = str(accounts[x])
+
+                    output = as_transaction(
+                        date=date,
+                        amount=amount,
+                        metadata=metadata,
+                        account_metadata=account_metadata,
+                        **accounts[0],
+                        **self.beancount_config,
+                    )
+                    # print(output) # debug
+                    f.write(output)
+                print(f"Written {file_name}")
+        except IOError as e:
+            print(e)
 
     def convert(self, csv_file: str, bean_file: str):
         """Convert transactions in a CSV file to a Beancount file

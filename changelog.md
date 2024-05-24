@@ -1,5 +1,10 @@
 # Changelog
 
+0.4.0
+
+* Identify and label transactions to user-defined sub-accounts. Documentation is incoming.
+  * __Breaking change__: Structure of `config.toml` has changed.
+
 0.3.0
 
 * Fix a hard-coded year bug in JABank.py.

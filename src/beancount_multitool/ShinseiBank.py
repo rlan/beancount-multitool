@@ -1,8 +1,13 @@
 import pandas as pd
+from pathlib import Path
+import uuid
 
 from .Institution import Institution
+from .MappingDatabase import MappingDatabase
 from .read_config import read_config
 from .as_transaction import as_transaction
+from .get_value import get_value
+from .get_beancount_config import get_beancount_config
 
 
 class ShinseiBank(Institution):
@@ -11,8 +16,17 @@ class ShinseiBank(Institution):
     def __init__(self, config_file: str):
         # params
         self.config_file = config_file
-
+        # attributes
         self.config = read_config(config_file)
+        self.beancount_config = get_beancount_config(self.config)
+        # Use basedir of config_file to read mapping database files
+        base_dir = Path(config_file).parent
+        credit_file = get_value(self.config, "database", "credit_mapping")
+        self.credit_file = str(base_dir / credit_file)
+        debit_file = get_value(self.config, "database", "debit_mapping")
+        self.debit_file = str(base_dir / debit_file)
+        self.credit_db = MappingDatabase(self.credit_file)
+        self.debit_db = MappingDatabase(self.debit_file)
 
     def read_transaction(self, file_name: str) -> pd.DataFrame:
         """Read financial transactions into a Pandas DataFrame.
@@ -30,18 +44,19 @@ class ShinseiBank(Institution):
         df = pd.read_csv(file_name)
         print(f"Found {len(df.index)} transactions in {file_name}")
 
+        # Rename column names to English.
         # Column names can be English or Japanese
         # "取引日","摘要","出金金額","入金金額","残高"
         # "Value Date","Description","Debit","Credit","Balance"
-        # Rename column names
+        # Lowercase names will be keyword arguments later.
         column_names = {
-            "取引日": "Date",
-            "摘要": "Description",
+            "取引日": "date",
+            "摘要": "memo",
             "出金金額": "Debit",
             "入金金額": "Credit",
             "残高": "Balance",
-            "Value Date": "Date",
-            # "Description": "Description",
+            "Value Date": "date",
+            "Description": "memo",
             # "Debit": "Debit",
             # "Credit": "Credit",
             # "Balance": "Balance",
@@ -49,12 +64,13 @@ class ShinseiBank(Institution):
         df.rename(columns=column_names, inplace=True)
 
         # Convert date column to a datetime object
-        df["Date"] = pd.to_datetime(df["Date"], format="%Y/%m/%d")
+        df["date"] = pd.to_datetime(df["date"], format="%Y/%m/%d")
         # Fill empty cells with zeros
         df.fillna(0, inplace=True)
         # Convert float to int
         df["Debit"] = df["Debit"].astype(int)
         df["Credit"] = df["Credit"].astype(int)
+        df["amount"] = df["Credit"] - df["Debit"]
 
         # Reverse row order because the oldest transaction is on the bottom
         # Note: the index column is also reversed
@@ -78,53 +94,43 @@ class ShinseiBank(Institution):
         -------
         None
         """
+        try:
+            with open(file_name, "w", encoding="utf-8") as f:
+                for row in df.index:
+                    date = df["date"][row]
+                    amount = df["amount"][row]
+                    memo = df["memo"][row]
+                    metadata = {"memo": memo}
 
-        currency = self.config["currency"]
-        source_account = self.config["source_account"]
-        credit_target_account = self.config["default"]["credit"]["account"]
-        credit_narration = self.config["default"]["credit"]["narration"]
-        credit_tag = self.config["default"]["credit"]["tag"]
-        credit_flag = self.config["default"]["credit"]["flag"]
-        debit_target_account = self.config["default"]["debit"]["account"]
-        debit_narration = self.config["default"]["debit"]["narration"]
-        debit_tag = self.config["default"]["debit"]["tag"]
-        debit_flag = self.config["default"]["debit"]["flag"]
+                    if amount < 0:  # a debit
+                        accounts = self.debit_db.match(memo)
+                    else:  # a credit
+                        accounts = self.credit_db.match(memo)
 
-        with open(file_name, "w", encoding="utf-8") as f:
-            for row in df.index:
-                date = df["Date"][row]
-                description = df["Description"][row]
-                debit = df["Debit"][row]
-                credit = df["Credit"][row]
+                    # Add UUID for manual transactions reconcilation between accounts
+                    if "#reconcile" in accounts[0]["tags"]:
+                        if amount > 0:  # a credit
+                            metadata["uuid"] = ""
+                        else:  # a debit
+                            metadata["uuid"] = str(uuid.uuid4())
 
-                if credit == 0:  # a debit
+                    account_metadata = {}
+                    for x in range(1, len(accounts)):
+                        account_metadata[f"match{x+1}"] = str(accounts[x])
+
                     output = as_transaction(
-                        date,
-                        description,
-                        debit_narration,
-                        debit_tag,
-                        source_account,
-                        debit_target_account,
-                        debit,
-                        currency,
-                        debit_flag,
+                        date=date,
+                        amount=-amount,
+                        metadata=metadata,
+                        account_metadata=account_metadata,
+                        **accounts[0],
+                        **self.beancount_config,
                     )
-                else:  # a credit
-                    output = as_transaction(
-                        date,
-                        description,
-                        credit_narration,
-                        credit_tag,
-                        source_account,
-                        credit_target_account,
-                        -credit,
-                        currency,
-                        credit_flag,
-                    )
-
-                # print(output) # debug
-                f.write(output)
-            print(f"Written {file_name}")
+                    # print(output) # debug
+                    f.write(output)
+                print(f"Written {file_name}")
+        except IOError as e:
+            print(e)
 
     def convert(self, csv_file: str, bean_file: str):
         """Convert transactions in a CSV file to a Beancount file

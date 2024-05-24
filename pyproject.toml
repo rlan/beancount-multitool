@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "beancount-multitool"
-version = "0.3.0"
+version = "0.4.0"
 description = "A CLI tool that converts financial data to Beancount files"
 authors = ["Rick Lan <rlan@users.noreply.github.com>"]
 license = "MIT"
@@ -26,6 +26,7 @@ python = "^3.9"
 pandas = "^2.2.2"
 click = "^8.1.7"
 tomli = { version = "^2.0.1", python = "<3.11" }
+tqdm = "^4.66.4"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0"

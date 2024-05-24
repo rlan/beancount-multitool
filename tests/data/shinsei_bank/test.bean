@@ -1,8 +1,10 @@
 
-2023-06-22 * "振込手数料" ""  #NoCategory
+2023-06-22 * "Unknown payee" ""  #NoMatch
+  memo: "振込手数料"
   Assets:JP:ShinseiBank
   !  Expenses:JP:Unknown:ShinseiBank  110 JPY
 
-2023-06-22 * "振込手数料" ""  #NoCategory
+2023-06-22 * "Unknown payee" ""  #NoMatch
+  memo: "振込手数料"
   Assets:JP:ShinseiBank
   !  Income:JP:Unknown:ShinseiBank  -110 JPY

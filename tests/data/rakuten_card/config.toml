@@ -1,11 +1,9 @@
 # Config for Rakuten Card
 
+[beancount]
 currency = "JPY"
 source_account = "Liabilities:JP:RakutenCard"
 
-# Default transaction
-[default]
-account = "Expenses:JP:Unknown:RakutenCard"
-narration = ""
-tag = ["#NoCategory"]
-flag = "!"
+[database]
+# File path is relative to current file
+debit_mapping = "debit_mapping.toml"

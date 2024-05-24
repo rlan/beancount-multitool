@@ -1,0 +1,17 @@
+# Debit mapping database for Shinsei Bank
+
+[default]
+regex = ""
+account = "Expenses:JP:Unknown:ShinseiBank"
+payee = "Unknown payee"
+narration = ""
+tags = ["#NoMatch"]
+flag = "!"
+
+[blank]
+regex = ""
+account = ""
+payee = ""
+narration = ""
+tags = []
+flag = ""
