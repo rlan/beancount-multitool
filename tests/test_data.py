@@ -37,7 +37,7 @@ def test_data(assets):
     elif assets["name"] == bcmt.ShinseiBank.NAME:
         app = bcmt.ShinseiBank(assets["config_file"])
     else:
-        raise AssertionError(f"Unknown institution name: {assets["name"]}")
+        raise AssertionError(f'Unknown institution name: {assets["name"]}')
 
     app.convert(assets["in_file"], assets["out_file"])
     out = Path(assets["out_file"])
