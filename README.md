@@ -4,10 +4,11 @@
 [![pypi version](https://img.shields.io/pypi/v/beancount-multitool)](https://pypi.org/project/beancount-multitool/)
 ![python version required](https://img.shields.io/pypi/pyversions/beancount-multitool)
 ![static coverage badge](https://img.shields.io/badge/Coverage-89%25-blue)
+[![Built with Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-526CFE?logo=MaterialForMkDocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
 
 [Beancount Multitool](https://github.com/rlan/beancount-multitool/) is a command-line-interface (CLI) tool that converts financial data from financial institutions to Beancount files.
 
-The following institutions are supported:
+The following financial institutions are supported:
 
 * Japan
   * [JA Bank ＪＡネットバンク](https://www.jabank.jp/)
@@ -15,79 +16,6 @@ The following institutions are supported:
   * [Rakuten Bank 楽天銀行](https://www.rakuten-bank.co.jp/)
   * [SBI Shinsei Bank 新生銀行](https://www.sbishinseibank.co.jp/)
 
-What these scripts __can__ do:
+To get started, see the [documentation](https://rlan.github.io/beancount-multitool).
 
-* Read raw CSV files downloaded from each institution's website.
-* Label transactions with different sub-accounts, e.g., `Expenses:JP:Food:Grocery` or `Expenses:JP:Food:Restaurant`.
-  * Documentation is incoming.
-* Label unknown transactions to respective account types.
-  * Debit: `Expenses:JP:Unknown:NameOfInstitution`
-  * Credit: `Income:JP:Unknown:NameOfInstitution`
-
-What these scripts __can not__ (yet) do:
-
-* To be added.
-
-Installation:
-
-```sh
-pip install beancount-multitool
-```
-
-Usage:
-
-```sh
-bean-mt --help
-```
-
-```txt
-Usage: bean-mt [OPTIONS] NAME CONFIG DATA
-
-  Read financial data and output a Beancount file.
-
-  NAME is the name of the financial institution. See Note below for a list of
-  supported names.
-
-  CONFIG is a .toml file with run-time configurations, e.g. config.toml.
-
-  DATA is the raw financial data downloaded from NAME, e.g. input.csv.
-
-Options:
-  --output PATH  Resulting Beancount file
-  --version      Show the version and exit.
-  --help         Show this message and exit.
-
-  Note: supported names of financial institutions: ['ja_bank', 'rakuten_bank',
-  'rakuten_card', 'shinsei_bank']
-```
-
-Example:
-
-```sh
-bean-mt rakuten_bank config.toml 2024-01.csv --output 2024-01.bean
-```
-
-Workflow:
-
-1. Download the raw CSV files from a financial institutions.
-2. Run `bean-mt`.
-3. Include the `output.bean` file in my ledger.
-4. Manually edit that Beancount file to my needs.
-
-config.toml:
-
-There is a default config.toml per financial institutions. Examples are in the test [data folder](tests/data).
-
-## Requirements
-
-* Python 3.9 or higher.
-
-## More
-
-* [Todo](todo.md)
-* [Changelog](changelog.md)
-* [Development](development.md)
-
-## License
-
-MIT License
+License: MIT

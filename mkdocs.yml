@@ -47,6 +47,9 @@ nav:
   - Reference:
     - reference/data_model.md
     - reference/new_importer.md
+    - reference/changelog.md
+    - reference/development.md
+    - reference/todo.md
 
 repo_url: https://github.com/rlan/beancount-multitool
 repo_name: rlan/beancount-multitool
@@ -59,3 +62,6 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
