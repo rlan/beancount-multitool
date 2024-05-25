@@ -8,6 +8,7 @@ theme:
     - search.highlight
     - content.action.view
     - content.action.edit
+    - content.code.copy
 
   # Color palette toggle
   palette: 
@@ -33,16 +34,19 @@ plugins:
 nav:
   - index.md
   - getting-started/index.md
-  - examples/index.md
+  - Usage:
+    - usage/index.md
+    - usage/configs.md
+    - usage/examples.md
   - Financial Institutions:
     - institutions/index.md
     - institutions/ja_bank.md
     - institutions/rakuten_bank.md
     - institutions/rakuten_card.md
     - institutions/shinsei_bank.md
-    - institutions/new_bank.md
   - Reference:
     - reference/data_model.md
+    - reference/new_importer.md
 
 repo_url: https://github.com/rlan/beancount-multitool
 repo_name: rlan/beancount-multitool

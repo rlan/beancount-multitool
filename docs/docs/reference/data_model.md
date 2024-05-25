@@ -43,7 +43,7 @@ classDiagram
         int balance
     }
 
-    class Root{
+    class Beancount{
         str source_account
         str currency
     }
