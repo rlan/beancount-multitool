@@ -14,6 +14,7 @@ TODO
 
 * What is a mapping.
 * How to add more mappings?
+* Does not support split transactions.
 
 ## Money transfers
 
