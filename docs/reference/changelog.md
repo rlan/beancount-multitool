@@ -1,5 +1,9 @@
 # Changelog
 
+0.4.1
+
+* Bug fix. Multiple account matches were not written to Beancount transactions.
+
 0.4.0
 
 * Identify and label transactions to user-defined sub-accounts. Documentation is incoming.

@@ -1,0 +1,10 @@
+# Config for JA Bank
+
+[beancount]
+currency = "JPY"
+source_account = "Assets:JP:JABank"
+
+[database]
+# File path is relative to current file
+credit_mapping = "credit_mapping.toml"
+debit_mapping = "debit_mapping.toml"

@@ -27,16 +27,7 @@ def assets(tmp_path, request):
     yield data
 
 
-"""
-def test_assets(assets):
-    import pprint
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(assets)
-
-"""
-
-
-def test_institutions(assets):
+def test_data(assets):
     if assets["name"] == bcmt.JABank.NAME:
         app = bcmt.JABank(assets["config_file"])
     elif assets["name"] == bcmt.RakutenBank.NAME:
@@ -45,6 +36,8 @@ def test_institutions(assets):
         app = bcmt.RakutenCard(assets["config_file"])
     elif assets["name"] == bcmt.ShinseiBank.NAME:
         app = bcmt.ShinseiBank(assets["config_file"])
+    else:
+        raise AssertionError(f"Unknown institution name: {assets["name"]}")
 
     app.convert(assets["in_file"], assets["out_file"])
     out = Path(assets["out_file"])

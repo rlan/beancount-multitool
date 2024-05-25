@@ -18,7 +18,7 @@ Regular expressions uses `入出金内容` for matching.
 
 ## Example: label all transactions as default
 
-One of the automated tests does exactly this. Let's download it and run it locally.
+[One](https://github.com/rlan/beancount-multitool/tree/main/tests/data/rakuten_bank) of the automated tests does exactly this. Let's download and run it locally.
 
 ```sh
 mkdir rakuten_bank

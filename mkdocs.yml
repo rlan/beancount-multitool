@@ -57,11 +57,16 @@ edit_uri: edit/main/docs/
 copyright: Copyright &copy; 2024 Rick Lan
 
 markdown_extensions:
+  - def_list
+  - toc:
+      permalink: true
+
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - def_list
   - pymdownx.tasklist:
       custom_checkbox: true

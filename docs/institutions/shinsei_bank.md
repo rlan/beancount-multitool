@@ -27,7 +27,7 @@ The raw CSV file does not contain the sender memo that one enters during outgoin
 
 ## Example: label all transactions as default
 
-One of the automated tests does exactly this. Let's download it and run it locally.
+[One](https://github.com/rlan/beancount-multitool/tree/main/tests/data/shinsei_bank) of the automated tests does exactly this. Let's download and run it locally.
 
 ```sh
 mkdir shinsei_bank

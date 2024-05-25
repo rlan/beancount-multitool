@@ -10,31 +10,31 @@ Install
 
 * [pyenv](https://github.com/pyenv/pyenv) and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
 
-  ```sh
-  brew install pyenv pyenv-virtualenv
-  ```
+    ```sh
+    brew install pyenv pyenv-virtualenv
+    ```
 
 * [pipx](https://github.com/pypa/pipx)
 
-  ```sh
-  brew install pipx
-  ```
+    ```sh
+    brew install pipx
+    ```
 
 * [Poetry](https://github.com/python-poetry/poetry)
 
-  ```sh
-  pipx install poetry
-  ```
+    ```sh
+    pipx install poetry
+    ```
 
 * [ruff](https://github.com/astral-sh/ruff)
 
-  ```sh
-  brew install ruff
-  ```
+    ```sh
+    brew install ruff
+    ```
 
 Similar to this [setup](https://github.com/Hasenpfote/python-poetry-example?tab=readme-ov-file), but no tox and uses ruff.
 
-## Development
+## Procedure
 
 Get repo:
 
@@ -70,15 +70,15 @@ Test with coverage:
 
 ```sh
 pytest --cov --cov-report term
-  ```
+```
 
-## Publish checklist
+## PyPi publish checklist
 
-Ref: https://www.digitalocean.com/community/tutorials/how-to-publish-python-packages-to-pypi-using-poetry-on-ubuntu-22-04
+Ref: [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-publish-python-packages-to-pypi-using-poetry-on-ubuntu-22-04)
 
 * [ ] Bump version
     * [ ] `pyproject.toml`
-    * [ ] `src/beancount_multitool/\_\_version\_\_.py`
+    * [ ] `src/beancount_multitool/__version__.py`
     * [ ] Update [changelog](changelog.md)
 * [ ] Run local tests and coverage.
     * [ ] Update coverage number in project `README.md`.

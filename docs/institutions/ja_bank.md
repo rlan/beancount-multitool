@@ -34,7 +34,7 @@ The following two columns are concatentated then passed to regular expressions f
 
 ## Example: label all transactions as default
 
-One of the automated tests does exactly this. Let's download it and run it locally.
+[One](https://github.com/rlan/beancount-multitool/tree/main/tests/data/ja_bank) of the automated tests does exactly this. Let's download and run it locally.
 
 ```sh
 mkdir ja_bank

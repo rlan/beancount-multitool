@@ -1,0 +1,25 @@
+# Credit mapping database for JA Bank
+
+[default]
+regex = ""
+account = "Income:JP:Unknown:JABank"
+payee = "Unknown payee"
+narration = ""
+tags = ["#NoMatch"]
+flag = "!"
+
+[blank]
+regex = ""
+account = ""
+payee = ""
+narration = ""
+tags = []
+flag = ""
+
+[[mapping]]
+regex = '振込入金ｳｳ'
+account = "Assets:JP:Wallet"
+payee = "Self"
+narration = "ATM deposit"
+tags = ["#reconcile"]
+flag = "!"

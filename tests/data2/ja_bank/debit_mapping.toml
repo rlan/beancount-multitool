@@ -1,0 +1,33 @@
+# Debit mapping database for JA Bank
+
+[default]
+regex = ""
+account = "Expenses:JP:Unknown:JABank"
+payee = "Unknown payee"
+narration = ""
+tags = ["#NoMatch"]
+flag = "!"
+
+[blank]
+regex = ""
+account = ""
+payee = ""
+narration = ""
+tags = []
+flag = ""
+
+[[mapping]]
+regex = '出金NSS'
+account = "Expenses:Education:Books"
+payee = "Bookstore"
+narration = ""
+tags = []
+flag = ""
+
+[[mapping]]
+regex = '出金NS'
+account = "Expenses:Education:Classes"
+payee = "School"
+narration = ""
+tags = []
+flag = ""

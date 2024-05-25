@@ -56,4 +56,6 @@ def as_transaction(
         output += f'  {key}: "{value}"\n'
     output += f"  {source_account}\n"
     output += f"  {flag_str}{account}  {amount} {currency}\n"
+    for key, value in account_metadata.items():
+        output += f'    {key}: "{value}"\n'
     return output

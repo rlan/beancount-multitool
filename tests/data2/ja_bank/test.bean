@@ -1,0 +1,12 @@
+
+2024-04-30 * "Self" "ATM deposit"  #reconcile
+  memo: "振込入金ｳｳ"
+  uuid: ""
+  Assets:JP:JABank
+  !  Assets:JP:Wallet  -7000 JPY
+
+2024-04-30 * "Bookstore" ""
+  memo: "出金NSS"
+  Assets:JP:JABank
+  Expenses:Education:Books  4600 JPY
+    match2: "{'regex': '出金NS', 'account': 'Expenses:Education:Classes', 'payee': 'School', 'narration': '', 'tags': [], 'flag': ''}"
