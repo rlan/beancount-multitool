@@ -44,6 +44,7 @@ nav:
     - institutions/rakuten_bank.md
     - institutions/rakuten_card.md
     - institutions/shinsei_bank.md
+    - institutions/sumishin_net_bank.md
   - Reference:
     - reference/data_model.md
     - reference/new_importer.md

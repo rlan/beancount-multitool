@@ -8,6 +8,7 @@ from beancount_multitool import JABank
 from beancount_multitool import RakutenBank
 from beancount_multitool import RakutenCard
 from beancount_multitool import ShinseiBank
+from beancount_multitool import SumishinNetBank
 
 
 def validate_name(ctx, param, value):
@@ -19,7 +20,7 @@ def validate_name(ctx, param, value):
 
 
 @click.command(
-    epilog=f"Note: supported names of financial institutions: {__INSTITUTIONS__}"
+    epilog=f"Note: supported financial institutions are {__INSTITUTIONS__}"
 )
 @click.argument("name", type=str, callback=validate_name)
 @click.argument("config", type=click.Path(exists=True))
@@ -49,6 +50,10 @@ def main(name: str, config: str, data: str, output: str):
         tool = RakutenCard(config)
     elif name == ShinseiBank.NAME:
         tool = ShinseiBank(config)
+    elif name == SumishinNetBank.NAME:
+        tool = SumishinNetBank(config)
+    else:
+        raise ValueError(f"Unknown name: {name}")
 
     return tool.convert(data, output)
 

@@ -8,6 +8,8 @@ Beancount Multitool is a collection of tools for the end users of [Beancount](ht
 
 There is no importers for Japan financial institutions on Beancount's [contribution list](https://beancount.github.io/docs/external_contributions.html). So I created this tool.
 
+[Here](institutions/index.md) is a list of supported financial institutions.
+
 ### What is it good for?
 
 * The CLI tool saves the user from typing transaction from statements. The tool reads the raw CSV files downloaded from supported financial institutions. It converts the transactions in a CSV file to an importable Beancount file.

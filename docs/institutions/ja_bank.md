@@ -39,8 +39,6 @@ The following two columns are concatentated then passed to regular expressions f
 [One](https://github.com/rlan/beancount-multitool/tree/main/tests/data/ja_bank) of the automated tests does exactly this. Let's download and run it locally.
 
 ```sh
-mkdir ja_bank
-cd ja_bank
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/ja_bank/config.toml
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/ja_bank/credit_mapping.toml
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/ja_bank/debit_mapping.toml

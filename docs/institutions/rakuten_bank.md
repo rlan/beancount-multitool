@@ -21,8 +21,6 @@ Regular expressions uses `入出金内容` for matching.
 [One](https://github.com/rlan/beancount-multitool/tree/main/tests/data/rakuten_bank) of the automated tests does exactly this. Let's download and run it locally.
 
 ```sh
-mkdir rakuten_bank
-cd rakuten_bank
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/rakuten_bank/config.toml
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/rakuten_bank/credit_mapping.toml
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/rakuten_bank/debit_mapping.toml

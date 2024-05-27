@@ -36,6 +36,8 @@ def test_data(assets):
         app = bcmt.RakutenCard(assets["config_file"])
     elif assets["name"] == bcmt.ShinseiBank.NAME:
         app = bcmt.ShinseiBank(assets["config_file"])
+    elif assets["name"] == bcmt.SumishinNetBank.NAME:
+        app = bcmt.SumishinNetBank(assets["config_file"])
     else:
         raise AssertionError(f'Unknown institution name: {assets["name"]}')
 

@@ -21,8 +21,6 @@ Regular expressions uses `利用店名・商品名` for matching.
 [One](https://github.com/rlan/beancount-multitool/tree/main/tests/data/rakuten_card) of the automated tests does exactly this. Let's download and run it locally.
 
 ```sh
-mkdir rakuten_card
-cd rakuten_card
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/rakuten_card/config.toml
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/rakuten_card/credit_mapping.toml
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/rakuten_card/debit_mapping.toml

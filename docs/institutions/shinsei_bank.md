@@ -30,8 +30,6 @@ The raw CSV file does not contain the sender memo that one enters during outgoin
 [One](https://github.com/rlan/beancount-multitool/tree/main/tests/data/shinsei_bank) of the automated tests does exactly this. Let's download and run it locally.
 
 ```sh
-mkdir shinsei_bank
-cd shinsei_bank
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/shinsei_bank/config.toml
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/shinsei_bank/credit_mapping.toml
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/shinsei_bank/debit_mapping.toml

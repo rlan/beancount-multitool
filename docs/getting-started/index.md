@@ -45,6 +45,6 @@ Options:
   --version      Show the version and exit.
   --help         Show this message and exit.
 
-  Note: supported names of financial institutions: ['ja_bank', 'rakuten_bank',
-  'rakuten_card', 'shinsei_bank']
+  Note: supported financial institutions are ['ja_bank', 'rakuten_bank',
+  'rakuten_card', 'shinsei_bank', 'sumishin_net_bank']
 ```

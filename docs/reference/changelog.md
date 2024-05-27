@@ -1,5 +1,9 @@
 # Changelog
 
+0.5.0
+
+* Add support for SBI Sumishin Net Bank.
+
 0.4.1
 
 * Bug fix. Multiple account matches were not written to Beancount transactions.

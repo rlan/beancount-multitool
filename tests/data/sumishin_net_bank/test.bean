@@ -1,0 +1,10 @@
+
+2024-01-11 * "Unknown payee" ""  #NoMatch
+  memo: "ＡＴＭ　イーネット-"
+  Assets:JP:SumishinNetBank
+  !  Expenses:JP:Unknown:SumishinNetBank  35000 JPY
+
+2024-01-26 * "Unknown payee" ""  #NoMatch
+  memo: "振込＊ト-"
+  Assets:JP:SumishinNetBank
+  !  Income:JP:Unknown:SumishinNetBank  -40000 JPY
