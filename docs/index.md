@@ -21,7 +21,7 @@ The target audience is someone who is quite hands-on with their tools, in the sa
 ### What is it not good for?
 
 * The regular expressions are manually added and maintained by the user. The CLI tool does not make predictions from them. In other words, there is no machine learning.
-* The duplicate transactions for a money transfer between two bank account still exist. The CLI tool does not reconcile them. The user is expected to do so.
+* The regular expressions helps the user to mark potentional duplicates. However, duplicate transactions for a money transfer between two bank account will exist. The CLI tool does not reconcile them. Same as Beancount, the user is expected to do so.
 
 ### What is it *not yet* good for?
 
