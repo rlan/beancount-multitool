@@ -51,6 +51,7 @@ nav:
     - reference/changelog.md
     - reference/development.md
     - reference/todo.md
+  - thank_you.md
 
 repo_url: https://github.com/rlan/beancount-multitool
 repo_name: rlan/beancount-multitool
