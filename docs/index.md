@@ -2,13 +2,13 @@
 
 ## What is it?
 
-Beancount Multitool is a collection of tools for the end users of [Beancount](https://github.com/beancount/beancount). There is a command-line-interface (CLI) tool that converts financial data from financial institutions to Beancount files.
+Beancount Multitool is a collection of tools for the end users of [Beancount](https://github.com/beancount/beancount). Currenly, the entry point is a command-line-interface (CLI) tool that converts financial data from financial institutions to Beancount files.
 
 ## Why do I want it?
 
-There is no importers for Japan financial institutions on Beancount's [contribution list](https://beancount.github.io/docs/external_contributions.html). So I created this tool.
+There is no importers for Japan financial institutions on Beancount's [contribution list](https://beancount.github.io/docs/external_contributions.html). So I created this tool. [Here](institutions/index.md) is a list of supported financial institutions.
 
-[Here](institutions/index.md) is a list of supported financial institutions.
+The target audience is someone who is quite hands-on with their tools, in the same way a Beancount user is.
 
 ### What is it good for?
 
@@ -20,9 +20,21 @@ There is no importers for Japan financial institutions on Beancount's [contribut
 
 ### What is it not good for?
 
-* The regular expressions are manually added or modified by the user. The CLI tool does not make predictions from them. In other words, there is no machine learning.
+* The regular expressions are manually added and maintained by the user. The CLI tool does not make predictions from them. In other words, there is no machine learning.
 * The duplicate transactions for a money transfer between two bank account still exist. The CLI tool does not reconcile them. The user is expected to do so.
 
 ### What is it *not yet* good for?
 
-* TBD.
+* The tool supports only transactions with one source account and one target account. It does not support [splitting expenses][] as described in Beancount's documentation. For example, if there is a hotel bill that combines lodging, food and entertainment costs in one charge, this tool can not help with splitting that expense into three different expense accounts.
+* The tool does not support transactions with currency exchanges.
+
+## What does success look like for this project?
+
+If I can only list 3 requirements:
+
+1. Data ingest. I plan to query my ledger like a database. The financial data files must be ingested correctly.
+2. Reusability. Every month, I import data from 10+ accounts.
+3. Automated tests. As I add more importers and features, I will break things. Automated tests helps with shipping working code.
+
+
+[splitting expenses]: https://beancount.github.io/docs/sharing_expenses_with_beancount.html#splitting-expenses

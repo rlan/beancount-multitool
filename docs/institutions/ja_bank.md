@@ -46,3 +46,16 @@ wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/
 wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data/ja_bank/test.csv
 bean-mt ja_bank config.toml test.csv --output out.bean
 ```
+
+## Example: simple account labeling using regular expressions
+
+[This](https://github.com/rlan/beancount-multitool/tree/main/tests/data2/ja_bank) automated test does exactly this. Let's download and run it locally.
+
+```sh
+wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data2/ja_bank/config.toml
+wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data2/ja_bank/credit_mapping.toml
+wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data2/ja_bank/debit_mapping.toml
+wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data2/ja_bank/test.bean
+wget https://raw.githubusercontent.com/rlan/beancount-multitool/main/tests/data2/ja_bank/test.csv
+bean-mt ja_bank config.toml test.csv --output out.bean
+```
