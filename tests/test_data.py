@@ -6,9 +6,9 @@ import beancount_multitool as bcmt
 
 @pytest.fixture(params=bcmt.__INSTITUTIONS__)
 def assets(tmp_path, request):
-    name = request.param
-    base_dir = Path("./tests/data")
+    base_dir = request.path.parent / "data"
     assert base_dir.is_dir(), f"Expected folder missing: {str(base_dir.resolve())}"
+    name = request.param
     data_dir = base_dir / name
     assert data_dir.is_dir(), f"Expected folder missing: {str(data_dir.resolve())}"
     in_file = data_dir / "test.csv"

@@ -1,12 +1,11 @@
 import pytest
 
-from pathlib import Path
 import beancount_multitool as bcmt
 
 
 @pytest.fixture
-def base_dir():
-    dir = Path("./tests/data2")
+def base_dir(request):
+    dir = request.path.parent / "data2"
     assert dir.is_dir(), f"Expected folder missing: {str(dir.resolve())}"
     yield dir
 
