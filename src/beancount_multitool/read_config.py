@@ -20,11 +20,26 @@ def read_config(file_name: str) -> dict:
     Returns
     -------
     dict
-        TOML file content
+        TOML file content. Returns an empty dict if file not found
+        or error decoding TOML data.
     """
-    with open(file_name, "rb") as f:
-        config = tomllib.load(f)
-        # Exception will be thrown if file not found.
-        # print(config) # debug
-        # print(type(config)) # debug
-        return config
+    try:
+        with open(file_name, "rb") as f:
+            try:
+                config = tomllib.load(f)
+            except tomllib.TOMLDecodeError as e:
+                print(f"Has invalid TOML data: {file_name}")
+                print(e)
+                config = {}
+            else:
+                if len(config) == 0:  # Empty file
+                    print(f"Has no TOML data: {file_name}")
+
+    except FileNotFoundError as e:
+        print(f"File not found: {file_name}")
+        print(e)
+        config = {}
+
+    # print(config) # debug
+    # print(type(config)) # debug
+    return config
