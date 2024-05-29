@@ -15,6 +15,10 @@ def get_beancount_config(config: dict) -> dict:
     dict
         config["beancount"]
 
+    Raises
+    ------
+    KeyError
+        if "beancount" key does not exist.
     """
     if "beancount" in config:
         return config["beancount"]
