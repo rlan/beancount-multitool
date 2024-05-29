@@ -14,6 +14,8 @@ Header row:
 "日付","内容","出金金額(円)","入金金額(円)","残高(円)","メモ"
 ```
 
+### Regular expressions
+
 The following two columns are concatentated then passed to regular expressions for matching: `内容` and `メモ`.
 
 ## Example: label all transactions as default

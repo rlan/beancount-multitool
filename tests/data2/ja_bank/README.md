@@ -1,6 +1,6 @@
 # Read Me
 
-A test case that demostrates a reserved hashtag `#reconcile`. This test case also demonstrates multiple account matches for one expense.
+A test case that demostrates a reserved tag `#reconcile`. This test case also demonstrates multiple account matches for one expense.
 
 Command:
 
@@ -9,5 +9,5 @@ bean-mt \
   ja_bank \
   ./config.toml \
   ./test.csv \
-  --output out.bean
+  --output output.bean
 ```

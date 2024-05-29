@@ -36,6 +36,7 @@ nav:
   - getting-started/index.md
   - Usage:
     - usage/index.md
+    - usage/tags.md
     - usage/configs.md
     - usage/examples.md
   - Financial Institutions:

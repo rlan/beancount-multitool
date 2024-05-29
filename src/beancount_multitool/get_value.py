@@ -16,6 +16,11 @@ def get_value(config: dict, section: str, variable: str) -> str:
     -------
     str
         value
+
+    Raises
+    ------
+    KeyError
+        if "section" key or "variable" key does not exist.
     """
     if section in config:
         if variable in config[section]:

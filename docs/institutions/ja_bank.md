@@ -32,6 +32,8 @@ column_names = {
 
 Note on dates. On inspection of the CSV file, there are no year in dates, e.g. 4月30日. Thus, the tool uses the current year during conversion. So if you are converting data from last year, edit the generate bean file after conversion.
 
+### Regular expressions
+
 The following two columns are concatentated then passed to regular expressions for matching: `Transaction Classification` and `Description`.
 
 ## Example: label all transactions as default

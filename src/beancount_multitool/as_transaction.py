@@ -24,12 +24,12 @@ def as_transaction(
     str
         A beancount transaction entry:
 
-        {date} * "{payee}" "{narration}" {" ".join(tags)}
-          for key, value in metadata:
+        {date} * "{payee}" "{narration}" {" ".join({tags})}
+          for key, value in {metadata}:
             {key}: "{value}"
           {source_account}
           {flag}{account}  {amount} {currency}
-            for key, value in metadata:
+            for key, value in {account_metadata}:
               {key}: "{value}"
     """
     # Add "#" prefix if does not exist

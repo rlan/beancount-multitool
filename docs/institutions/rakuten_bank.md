@@ -14,6 +14,8 @@ Header row:
 取引日,入出金(円),取引後残高(円),入出金内容
 ```
 
+### Regular expressions
+
 Regular expressions uses `入出金内容` for matching.
 
 ## Example: label all transactions as default

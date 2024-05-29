@@ -4,7 +4,7 @@
 
 Python 3.9, 3.10, 3.11 or 3.12.
 
-These versions are tested via CI/CD. Prior versions of Python may work, just untested.
+All of these versions are tested via [CI/CD]. Due to use of [removeprefix()][], not compatible with previous versions of Python.
 
 ## Installation
 
@@ -48,3 +48,7 @@ Options:
   Note: supported financial institutions are ['ja_bank', 'rakuten_bank',
   'rakuten_card', 'shinsei_bank', 'sumishin_net_bank']
 ```
+
+
+[removeprefix()]: https://docs.python.org/3/library/stdtypes.html#str.removeprefix
+[CI/CD]: https://github.com/rlan/beancount-multitool/actions/workflows/tests.yml

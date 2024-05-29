@@ -21,7 +21,11 @@ English header row:
 "Value Date","Description","Debit","Credit","Balance"
 ```
 
+### Regular expressions
+
 Regular expressions uses `摘要` (or `Description`) for matching.
+
+### On sender memo
 
 The raw CSV file does not contain the sender memo that one enters during outgoing money transfers. This info is recorded in the bank's PDF files, instead. My current workaround is manually copying that text from the PDF to the `摘要` (or `Description`) column in the CSV.
 

@@ -15,8 +15,8 @@ The target audience is someone who is quite hands-on with their tools, in the sa
 * The CLI tool saves the user from typing transaction from statements. The tool reads the raw CSV files downloaded from supported financial institutions. It converts the transactions in a CSV file to an importable Beancount file.
     * For example, it can label all debit transactions as `Expenses:JP:Unknown:NameOfInstitution`.
     * and all credit transaction as `Income:JP:Unknown:NameOfInstitution`.
-* The CLI tool uses regular expressions to find recurring expenses. Once found, they are labeled by user-defined account and hashtags, e.g. `Expenses:JP:Food:Grocery` or `Expenses:JP:Food:Restaurant`.
-* Outgoing money transfers can be found via regular expressions and be labeled with a reserved hashtag (`#reconcile`). Then an unique UUID string is generated and appended to that Beancount transaction. This UUID can be used on the receiving Beancount transaction to "link" them for reconcilation.
+* The CLI tool uses regular expressions to find recurring expenses. Once found, they are labeled by user-defined account and tags, e.g. `Expenses:JP:Food:Grocery` or `Expenses:JP:Food:Restaurant`.
+* Outgoing money transfers can be found via regular expressions and be labeled with a reserved tag (`#reconcile`). Then an unique UUID string is generated and appended to that Beancount transaction. This UUID can be used on the receiving Beancount transaction to "link" them for reconcilation.
 
 ### What is it not good for?
 
@@ -38,3 +38,9 @@ If I can only list 3 requirements:
 
 
 [splitting expenses]: https://beancount.github.io/docs/sharing_expenses_with_beancount.html#splitting-expenses
+
+## What are the innovations?
+
+* Parsing the CSV file from each financial instituation to standard data structure, [Pandas Dataframe](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html).
+* [Reserved words](usage/tags.md) in tags injects additional metadata to a Beancount transaction.
+    * I didn't do a survey of tools out there, just a gut feeling.
