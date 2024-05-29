@@ -121,6 +121,7 @@ class RakutenCard(Institution):
                     f.write(output)
                 print(f"Written {file_name}")
         except IOError as e:
+            print(f"Error encountered while writing to: {file_name}")
             print(e)
 
     def convert(self, csv_file: str, bean_file: str):

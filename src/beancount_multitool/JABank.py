@@ -2,6 +2,7 @@ from datetime import datetime
 import pandas as pd
 from pathlib import Path
 import uuid
+import sys
 
 from .Institution import Institution
 from .MappingDatabase import MappingDatabase
@@ -108,7 +109,11 @@ class JABank(Institution):
                         if amount > 0:  # a credit
                             metadata["uuid"] = ""
                         else:  # a debit
-                            metadata["uuid"] = str(uuid.uuid4())
+                            if hasattr(sys, "_called_from_pytest"):
+                                # remove randomness during pytest
+                                metadata["uuid"] = "_called_from_pytest"
+                            else:
+                                metadata["uuid"] = str(uuid.uuid4())
 
                     account_metadata = {}
                     for x in range(1, len(accounts)):
@@ -126,6 +131,7 @@ class JABank(Institution):
                     f.write(output)
                 print(f"Written {file_name}")
         except IOError as e:
+            print(f"Error encountered while writing to: {file_name}")
             print(e)
 
     def convert(self, csv_file: str, bean_file: str):
