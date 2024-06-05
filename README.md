@@ -6,7 +6,7 @@
 ![static coverage badge](https://img.shields.io/badge/Coverage-92%25-blue)
 [![Built with Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-526CFE?logo=MaterialForMkDocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
 
-[Beancount Multitool](https://github.com/rlan/beancount-multitool/) is a command-line-interface (CLI) tool that converts financial data from financial institutions to Beancount files.
+[Beancount Multitool](https://github.com/rlan/beancount-multitool/) is a command-line-interface (CLI) tool that converts financial data from financial institutions to [Beancount](https://github.com/beancount/beancount) files.
 
 The following financial institutions are supported:
 

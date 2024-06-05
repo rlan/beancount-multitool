@@ -12,5 +12,6 @@ A typical workflow using the CLI tool with a Beancount ledger:
 
 * For quick start, choose [one](../institutions/index.md) of the financial institutions. Then modify the label-all-as-default example to match your Beacount ledger accounts.
 * For a simple example of using regular expression to label accounts, see the regular expression example for [JA Bank](../institutions/ja_bank.md).
+* For developers, see [here](../reference/development.md).
 * Learn about [configurations](configs.md) of `bean-mt` CLI tool.
 * Here are some [examples](examples.md) of common usage.
