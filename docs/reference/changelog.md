@@ -1,5 +1,9 @@
 # Changelog
 
+0.6.1
+
+* Typing errors in Python 3.9.
+
 0.6.0
 
 * All currency values use decimal.Decimal.

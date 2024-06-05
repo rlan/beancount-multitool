@@ -1,6 +1,7 @@
 from datetime import datetime
 from decimal import Decimal
 import sys
+from typing import Optional
 import uuid
 
 
@@ -47,17 +48,17 @@ def reconcile(func):
 @reconcile
 @make_hashtags
 def as_transaction(
-    date: datetime | None = None,
+    date: Optional[datetime] = None,
     payee: str = "",
     narration: str = "",
-    tags: list[str] | None = None,
+    tags: Optional[list[str]] = None,
     source_account: str = "",
     account: str = "",
     amount: Decimal = Decimal(0),
     currency: str = "",
     flag: str = "",
-    metadata: dict | None = None,
-    account_metadata: dict | None = None,
+    metadata: Optional[dict] = None,
+    account_metadata: Optional[dict] = None,
     **kwargs,
 ) -> str:
     """

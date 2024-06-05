@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "beancount-multitool"
-version = "0.6.0"
+version = "0.6.1"
 description = "A CLI tool that converts financial data to Beancount files"
 authors = ["Rick Lan <rlan@users.noreply.github.com>"]
 license = "MIT"

@@ -83,5 +83,6 @@ Ref: [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-pub
 * [ ] Run local tests and coverage.
     * [ ] Update coverage number in project `README.md`.
 * [ ] `git commit` and check that GitHub Action tests succeed.
+* [ ] `git tag -a v0.5.0 -m "v0.5.0"`
 * [ ] `poetry build`
 * [ ] `poetry publish`
