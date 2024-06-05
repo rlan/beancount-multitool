@@ -5,7 +5,7 @@
   Assets:JP:JABank
   !  Assets:JP:Wallet  -7000 JPY
 
-2024-04-30 * "Bookstore" ""
+2024-04-30 * "Bookstore" ""  #nonfiction
   memo: "出金NSS"
   Assets:JP:JABank
   Expenses:Education:Books  4600 JPY

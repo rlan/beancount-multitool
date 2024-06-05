@@ -21,7 +21,7 @@ regex = '出金NSS'
 account = "Expenses:Education:Books"
 payee = "Bookstore"
 narration = ""
-tags = []
+tags = ["nonfiction"]
 flag = ""
 
 [[mapping]]

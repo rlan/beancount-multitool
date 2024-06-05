@@ -109,17 +109,6 @@ class SumishinNetBank(Institution):
                     else:  # a credit
                         accounts = self.credit_db.match(memo)
 
-                    # Add UUID for manual transactions reconcilation between accounts
-                    if "#reconcile" in accounts[0]["tags"]:
-                        if amount > 0:  # a credit
-                            metadata["uuid"] = ""
-                        else:  # a debit
-                            if hasattr(sys, "_called_from_pytest"):
-                                # remove randomness during pytest
-                                metadata["uuid"] = "_called_from_pytest"
-                            else:
-                                metadata["uuid"] = str(uuid.uuid4())
-
                     account_metadata = {}
                     for x in range(1, len(accounts)):
                         account_metadata[f"match{x+1}"] = str(accounts[x])
