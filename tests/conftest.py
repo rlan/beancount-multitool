@@ -7,4 +7,5 @@ def pytest_configure(config):
 
 def pytest_unconfigure(config):
     import sys
-    del sys._called_from_pytest
+    if hasattr(sys, "_called_from_pytest"):
+        del sys._called_from_pytest
