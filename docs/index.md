@@ -15,17 +15,17 @@ The target audience is someone who is quite hands-on with their tools, in the sa
 * The CLI tool saves the user from typing transaction from statements. The tool reads the raw CSV files downloaded from supported financial institutions. It converts the transactions in a CSV file to an importable Beancount file.
     * For example, it can label all debit transactions as `Expenses:JP:Unknown:NameOfInstitution`.
     * and all credit transaction as `Income:JP:Unknown:NameOfInstitution`.
-* The CLI tool uses regular expressions to find recurring expenses. Once found, they are labeled by user-defined account and tags, e.g. `Expenses:JP:Food:Grocery` or `Expenses:JP:Food:Restaurant`.
-* Outgoing money transfers can be found via regular expressions and be labeled with a reserved tag (`#reconcile`). Then an unique UUID string is generated and appended to that Beancount transaction. This UUID can be used on the receiving Beancount transaction to "link" them for reconcilation.
+* The CLI tool uses regular expressions to find recurring expenses. Once found, they are labeled by user-defined account, e.g. `Expenses:JP:Food:Grocery` or `Expenses:JP:Food:Restaurant`, user-defined tags and user-defined (Beancount) flag.
+* Outgoing money transfers can be found via regular expressions and can be labeled with a [reserved tag](usage/tags.md) `#reconcile`. Additional metadata is injected to help linking with receiving transaction.
 
 ### What is it not good for?
 
 * The regular expressions are manually added and maintained by the user. The CLI tool does not make predictions from them. In other words, there is no machine learning.
-* The regular expressions helps the user to mark potentional duplicates. However, duplicate transactions for a money transfer between two bank account will exist. The CLI tool does not reconcile them. Same as Beancount, the user is expected to do so.
+* The regular expressions identifies potentional duplicates via [reserved tags](usage/tags.md). However, these duplicate transactions for a money transfer between two bank accounts will be in the converted Beancount files. The CLI tool does not automatically reconcile them. Same as Beancount, the user is expected to do so.
 
 ### What is it *not yet* good for?
 
-* The tool supports only transactions with one source account and one target account. It does not support [splitting expenses][] as described in Beancount's documentation. For example, if there is a hotel bill that combines lodging, food and entertainment costs in one charge, this tool can not help with splitting that expense into three different expense accounts.
+* The tool supports only transactions with one source account and one target account. It does not support [splitting expenses][] as described in Beancount's documentation. For example, if there is a hotel bill that combines lodging, food and entertainment costs in one charge, this tool can not help with splitting that expense into three different expense accounts. **Workaroud**: manually edit the Beancount file after conversion.
 * The tool does not support transactions with currency exchanges.
 
 ## What does success look like for this project?

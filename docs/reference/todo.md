@@ -1,5 +1,6 @@
 # Todo
 
+* [ ] Check for malformed TOML files.
 * [x] Identify and label transactions to user-defined sub-accounts.
     * [x] Update docs.
 * [ ] Usage documentation.
