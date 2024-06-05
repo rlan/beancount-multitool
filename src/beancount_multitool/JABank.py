@@ -1,8 +1,8 @@
 from datetime import datetime
-import pandas as pd
+from decimal import Decimal
 from pathlib import Path
-import uuid
-import sys
+
+import pandas as pd
 
 from .Institution import Institution
 from .MappingDatabase import MappingDatabase
@@ -43,7 +43,17 @@ class JABank(Institution):
         pd.DataFrame
             A dataframe after pre-processing.
         """
-        df = pd.read_csv(file_name, encoding="shift_jis_2004")
+        converters = {
+            "明細区分": str,
+            "取扱日付": str,
+            "起算日": str,
+            "お支払金額": str,
+            "お預り金額": str,
+            "取引区分": str,
+            "残高": str,
+            "摘要": str,
+        }
+        df = pd.read_csv(file_name, encoding="shift_jis_2004", converters=converters)
         print(f"Found {len(df.index)} transactions in {file_name}")
 
         # Rename column names to English
@@ -66,13 +76,21 @@ class JABank(Institution):
             str(year) + "." + df["Handling Date"], format="%Y.%m月%d日"
         )
 
-        cols = ["Debit", "Credit"]
+        cols = ["Debit", "Credit", "Balance"]
         df[cols] = df[cols].replace({"\¥": "", ",": ""}, regex=True)
-        df.fillna({"Debit": 0, "Credit": 0}, inplace=True)
-        # Convert float to int
-        df[cols] = df[cols].astype(int)
+        df.replace(
+            to_replace="",
+            value={"Debit": "0", "Credit": "0", "Balance": "0"},
+            inplace=True,
+        )
+
+        df["Debit"] = df["Debit"].apply(Decimal)
+        df["Credit"] = df["Credit"].apply(Decimal)
+        df["Balance"] = df["Balance"].apply(Decimal)
+
         df["amount"] = df["Credit"] - df["Debit"]
         df["memo"] = df["Transaction Classification"] + df["Description"]
+
         # print(df.dtypes) # debug
         # print(df) # debug
         return df

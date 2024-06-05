@@ -19,9 +19,7 @@ def validate_name(ctx, param, value):
         raise click.BadParameter(f"Name must be one of: {__INSTITUTIONS__}")
 
 
-@click.command(
-    epilog=f"Note: supported financial institutions are {__INSTITUTIONS__}"
-)
+@click.command(epilog=f"Note: supported financial institutions are {__INSTITUTIONS__}")
 @click.argument("name", type=str, callback=validate_name)
 @click.argument("config", type=click.Path(exists=True))
 @click.argument("data", type=click.Path(exists=True))

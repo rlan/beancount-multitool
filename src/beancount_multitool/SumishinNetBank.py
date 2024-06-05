@@ -1,7 +1,5 @@
 from decimal import Decimal
 from pathlib import Path
-import uuid
-import sys
 
 import pandas as pd
 
@@ -44,14 +42,13 @@ class SumishinNetBank(Institution):
         pd.DataFrame
             A dataframe after pre-processing.
         """
-        df = pd.read_csv(file_name, 
-                        encoding="shift_jis",
-                        converters={
-                            "日付": pd.to_datetime,
-                            "出金金額(円)": str,
-                            "入金金額(円)": str,
-                            "残高(円)": str,
-        })
+        converters = {
+            "日付": pd.to_datetime,
+            "出金金額(円)": str,
+            "入金金額(円)": str,
+            "残高(円)": str,
+        }
+        df = pd.read_csv(file_name, encoding="shift_jis", converters=converters)
         print(f"Found {len(df.index)} data transactions")
         # Rename column names to English.
         # "日付","内容","出金金額(円)","入金金額(円)","残高(円)","メモ"
@@ -67,8 +64,17 @@ class SumishinNetBank(Institution):
         }
         df.rename(columns=columns, inplace=True)
 
-        df.replace(to_replace="", value={"Debit": "0", "Credit": "0", "Balance": "0"}, inplace=True)
-        df.replace(to_replace=",", value={"Debit": "", "Credit": "", "Balance": ""}, inplace=True, regex=True)
+        df.replace(
+            to_replace="",
+            value={"Debit": "0", "Credit": "0", "Balance": "0"},
+            inplace=True,
+        )
+        df.replace(
+            to_replace=",",
+            value={"Debit": "", "Credit": "", "Balance": ""},
+            inplace=True,
+            regex=True,
+        )
         df["Debit"] = df["Debit"].apply(Decimal)
         df["Credit"] = df["Credit"].apply(Decimal)
         df["Balance"] = df["Balance"].apply(Decimal)

@@ -1,5 +1,7 @@
-import pandas as pd
+from decimal import Decimal
 from pathlib import Path
+
+import pandas as pd
 
 from .Institution import Institution
 from .MappingDatabase import MappingDatabase
@@ -37,7 +39,16 @@ class RakutenCard(Institution):
         pd.DataFrame
             A dataframe after pre-processing.
         """
-        df = pd.read_csv(file_name)
+        converters = {
+            "利用日": pd.to_datetime,
+            "利用店名・商品名": str,
+            "利用者": str,
+            # "支払方法": "Payment method",
+            # "利用金額": "Amount",
+            # "支払手数料": "Commission paid",
+            "支払総額": str,
+        }
+        df = pd.read_csv(file_name, converters=converters)
         print(f"Found {len(df.index)} transactions in {file_name}")
 
         # Rename column names to English.
@@ -55,20 +66,25 @@ class RakutenCard(Institution):
         }
         df.rename(columns=column_names, inplace=True)
 
-        df["date"] = pd.to_datetime(df["date"], format="%Y/%m/%d")
-
-        # Remove rows with empty 支払総額 cell.
-        # These are extra info such as name of ETC gate or currency exchange rate.
-        # TODO record as metadata
-        extra = df.loc[pd.isnull(df["amount"])]
-        df.drop(extra.index, inplace=True)
-        # Convert to int type because currency is JPY
-        df = df.astype({"amount": int})
+        # ETC transaction has a second row.
+        # Update firsts to be concatenation of the two memos.
+        # Then delete the seconds.
+        etc_index = df.loc[df["user"] == "ETC"].index
+        df.loc[etc_index, "memo"] = (
+            df.loc[etc_index, "memo"].values
+            + " "
+            + df.loc[etc_index + 1, "memo"].values
+        )
+        df.drop(df.loc[df["user"] == ""].index, inplace=True)
 
         # Remove rows with zero 支払総額. These are refunds.
+        # Also currency exchange rate(?)
         # TODO record as metadata.
-        refund = df.loc[df["amount"] == 0]
-        df.drop(refund.index, inplace=True)
+        # refund = df.loc[df["amount"] == 0]
+        # df.drop(refund.index, inplace=True)
+
+        # TODO this will fail if the refund rows are not removed
+        df["amount"] = df["amount"].apply(Decimal)
 
         # Reverse row order because the oldest transaction is on the bottom
         # Note: the index column is also reversed

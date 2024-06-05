@@ -5,10 +5,9 @@ import uuid
 
 
 def make_hashtags(func):
-    """Add # prefix if missing from any tags.
-    """
-    def add_hash(*args, **kwargs):
+    """Add # prefix if missing from any tags."""
 
+    def add_hash(*args, **kwargs):
         hashtags = []
         for x in kwargs["tags"]:
             if len(x):
@@ -20,14 +19,14 @@ def make_hashtags(func):
 
         result = func(*args, **kwargs)
         return result
+
     return add_hash
 
 
 def reconcile(func):
-    """Add an UUID field if #reconcile tag exists
-    """
-    def add_uuid(*args, **kwargs):
+    """Add an UUID field if #reconcile tag exists"""
 
+    def add_uuid(*args, **kwargs):
         # Add UUID for manual transactions reconcilation between accounts
         if "#reconcile" in kwargs["tags"]:
             if kwargs["amount"] < 0:  # a credit
@@ -41,6 +40,7 @@ def reconcile(func):
 
         result = func(*args, **kwargs)
         return result
+
     return add_uuid
 
 

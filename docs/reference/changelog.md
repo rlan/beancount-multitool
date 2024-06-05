@@ -1,5 +1,10 @@
 # Changelog
 
+0.6.0
+
+* All currency values use decimal.Decimal.
+* Handle Rakuten ETC card charges in Rakuten Card.
+
 0.5.0
 
 * Add support for SBI Sumishin Net Bank.

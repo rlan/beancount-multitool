@@ -1,7 +1,7 @@
-import pandas as pd
+from decimal import Decimal
 from pathlib import Path
-import uuid
-import sys
+
+import pandas as pd
 
 from .Institution import Institution
 from .MappingDatabase import MappingDatabase
@@ -42,7 +42,12 @@ class RakutenBank(Institution):
         pd.DataFrame
             A dataframe after pre-processing.
         """
-        df = pd.read_csv(file_name, encoding="shiftjis")
+        converters = {
+            "取引日": pd.to_datetime,
+            "入出金(円)": str,
+            "取引後残高(円)": str,
+        }
+        df = pd.read_csv(file_name, encoding="shift_jis", converters=converters)
         print(f"Found {len(df.index)} transactions in {file_name}")
 
         # Rename column names to English.
@@ -56,8 +61,9 @@ class RakutenBank(Institution):
         }
         df.rename(columns=column_names, inplace=True)
 
-        # Convert date column to a datetime object
-        df["date"] = pd.to_datetime(df["date"], format="%Y%m%d")
+        df["amount"] = df["amount"].apply(Decimal)
+        df["Balance"] = df["Balance"].apply(Decimal)
+
         # print(df.dtypes) # debug
         # print(df) # debug
         return df

@@ -1,7 +1,7 @@
-import pandas as pd
+from decimal import Decimal
 from pathlib import Path
-import uuid
-import sys
+
+import pandas as pd
 
 from .Institution import Institution
 from .MappingDatabase import MappingDatabase
@@ -42,7 +42,17 @@ class ShinseiBank(Institution):
         pd.DataFrame
             A dataframe after pre-processing.
         """
-        df = pd.read_csv(file_name)
+        converters = {
+            "取引日": pd.to_datetime,
+            "出金金額": str,
+            "入金金額": str,
+            "残高": str,
+            "Value Date": pd.to_datetime,
+            "Debit": str,
+            "Credit": str,
+            "Balance": str,
+        }
+        df = pd.read_csv(file_name, converters=converters)
         print(f"Found {len(df.index)} transactions in {file_name}")
 
         # Rename column names to English.
@@ -64,13 +74,24 @@ class ShinseiBank(Institution):
         }
         df.rename(columns=column_names, inplace=True)
 
-        # Convert date column to a datetime object
-        df["date"] = pd.to_datetime(df["date"], format="%Y/%m/%d")
         # Fill empty cells with zeros
-        df.fillna(0, inplace=True)
-        # Convert float to int
-        df["Debit"] = df["Debit"].astype(int)
-        df["Credit"] = df["Credit"].astype(int)
+        df.replace(
+            to_replace="",
+            value={"Debit": "0", "Credit": "0", "Balance": "0"},
+            inplace=True,
+        )
+        # Remove thousands marker
+        df.replace(
+            to_replace=",",
+            value={"Debit": "", "Credit": "", "Balance": ""},
+            inplace=True,
+            regex=True,
+        )
+
+        df["Debit"] = df["Debit"].apply(Decimal)
+        df["Credit"] = df["Credit"].apply(Decimal)
+        df["Balance"] = df["Balance"].apply(Decimal)
+
         df["amount"] = df["Credit"] - df["Debit"]
 
         # Reverse row order because the oldest transaction is on the bottom

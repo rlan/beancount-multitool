@@ -1,4 +1,3 @@
-#import pytest
 from beancount_multitool.read_config import read_config
 
 
