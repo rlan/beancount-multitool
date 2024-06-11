@@ -16,6 +16,8 @@ The following financial institutions are supported:
   * [Rakuten Bank 楽天銀行](https://www.rakuten-bank.co.jp/)
   * [SBI Shinsei Bank 新生銀行](https://www.sbishinseibank.co.jp/)
   * [SBI Sumishin Net Bank 住信SBIネット銀行](https://www.netbk.co.jp/)
+* USA
+  * [Chase Sapphire Preferred Card](https://www.chase.com/)
 
 To get started, see the [documentation](https://rlan.github.io/beancount-multitool).
 

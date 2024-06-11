@@ -28,7 +28,9 @@ def assets(tmp_path, request):
 
 
 def test_data(assets):
-    if assets["name"] == bcmt.JABank.NAME:
+    if assets["name"] == bcmt.ChaseSPCard.NAME:
+        app = bcmt.ChaseSPCard(assets["config_file"])
+    elif assets["name"] == bcmt.JABank.NAME:
         app = bcmt.JABank(assets["config_file"])
     elif assets["name"] == bcmt.RakutenBank.NAME:
         app = bcmt.RakutenBank(assets["config_file"])

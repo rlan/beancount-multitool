@@ -1,5 +1,9 @@
 # Changelog
 
+0.7.0
+
+* Supports Chase Sapphire Preferred Card.
+
 0.6.1
 
 * Typing errors in Python 3.9.

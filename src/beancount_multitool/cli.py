@@ -4,6 +4,7 @@ import sys
 # Get available finanicial institutions
 from beancount_multitool import __INSTITUTIONS__
 
+from beancount_multitool import ChaseSPCard
 from beancount_multitool import JABank
 from beancount_multitool import RakutenBank
 from beancount_multitool import RakutenCard
@@ -40,7 +41,9 @@ def main(name: str, config: str, data: str, output: str):
 
     DATA is the raw financial data downloaded from NAME, e.g. input.csv.
     """
-    if name == JABank.NAME:
+    if name == ChaseSPCard.NAME:
+        tool = ChaseSPCard(config)
+    elif name == JABank.NAME:
         tool = JABank(config)
     elif name == RakutenBank.NAME:
         tool = RakutenBank(config)

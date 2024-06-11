@@ -41,6 +41,7 @@ nav:
     - usage/examples.md
   - Financial Institutions:
     - institutions/index.md
+    - institutions/chase_sp_card.md
     - institutions/ja_bank.md
     - institutions/rakuten_bank.md
     - institutions/rakuten_card.md

@@ -1,0 +1,9 @@
+# Config for Chase Sapphire Preferred Card
+
+[beancount]
+currency = "USD"
+source_account = "Liabilities:US:ChaseSapphirePreferredCard"
+
+[database]
+# File path is relative to current file
+debit_mapping = "debit_mapping.toml"
