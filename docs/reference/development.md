@@ -77,12 +77,14 @@ pytest --cov --cov-report term
 Ref: [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-publish-python-packages-to-pypi-using-poetry-on-ubuntu-22-04)
 
 * [ ] Bump version
-    * [ ] `pyproject.toml`
-    * [ ] `src/beancount_multitool/__version__.py`
-    * [ ] Update [changelog](changelog.md)
+  * [ ] `pyproject.toml`
+  * [ ] `src/beancount_multitool/__version__.py`
+  * [ ] Update [changelog](changelog.md)
 * [ ] Run local tests and coverage.
-    * [ ] Update coverage number in project `README.md`.
-* [ ] `git commit` and check that GitHub Action tests succeed.
+  * [ ] Update coverage number in project `README.md`.
+* [ ] `git commit`
+  * [ ] Check that the [test](../../.github/workflows/tests.yml) GitHub Action succeed.
+  * [ ] Docs are build with a [GitHub Action](../../.github/workflows/docs.yml).
 * [ ] `git tag -a v0.5.0 -m "v0.5.0"`
 * [ ] `poetry build`
 * [ ] `poetry publish`

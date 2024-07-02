@@ -25,7 +25,7 @@ The target audience is someone who is quite hands-on with their tools, in the sa
 
 ### What is it *not yet* good for?
 
-* The tool supports only transactions with one source account and one target account. It does not support [splitting expenses][] as described in Beancount's documentation. For example, if there is a hotel bill that combines lodging, food and entertainment costs in one charge, this tool can not help with splitting that expense into three different expense accounts. **Workaroud**: manually edit the Beancount file after conversion.
+* The tool supports only transactions with one source account and one target account. It does not support [splitting expenses][] as described in Beancount's documentation. For example, if there is a hotel bill that combines lodging, food and entertainment costs in one charge, this tool can not help with splitting that expense into three different expense accounts. **Workaround**: manually edit the Beancount file after conversion.
 * The tool does not support transactions with currency exchanges.
 
 ## What does success look like for this project?
