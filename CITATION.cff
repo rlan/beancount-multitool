@@ -1,0 +1,14 @@
+abstract: <p>Beancount Multitool is a command-line-interface (CLI) tool that converts
+  financial data from financial institutions to Beancount files.</p>
+authors:
+- family-names: Lan
+  given-names: Rick
+  orcid: 0000-0003-2830-2820
+cff-version: 1.2.0
+date-released: '2024-06-11'
+doi: 10.5281/zenodo.15025149
+license:
+- mit
+title: Beancount Multitool
+type: software
+version: 0.7.0
