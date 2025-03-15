@@ -21,6 +21,7 @@ class JABank(Institution):
         # attributes
         self.config = read_config(config_file)
         self.beancount_config = get_beancount_config(self.config)
+        self.year = int(get_value(self.config, "transaction", "year"))
         # Use basedir of config_file to read mapping database files
         base_dir = Path(config_file).parent
         credit_file = get_value(self.config, "database", "credit_mapping")
@@ -37,6 +38,10 @@ class JABank(Institution):
         ----------
         file_name : str
             Input file name.
+
+        year : int
+            The transaction file from JA Bank does not contain the year.
+            So we supply one.
 
         Returns
         -------
@@ -156,6 +161,5 @@ class JABank(Institution):
         -------
         None
         """
-        year = datetime.now().year
-        df = self.read_transaction(csv_file, year)
+        df = self.read_transaction(csv_file, self.year)
         self.write_bean(df, bean_file)

@@ -32,7 +32,13 @@ Install
     brew install ruff
     ```
 
-Similar to this [setup](https://github.com/Hasenpfote/python-poetry-example?tab=readme-ov-file), but no tox and uses ruff.
+* [mkdocs](https://www.mkdocs.org/)
+
+    ```sh
+    pip install mkdocs
+    ```
+
+Similar to this [setup](https://github.com/Hasenpfote/python-poetry-example), but no tox and uses ruff.
 
 ## Procedure
 
@@ -72,6 +78,12 @@ Test with coverage:
 pytest --cov --cov-report term
 ```
 
+Build documentation:
+
+```sh
+mkdocs build
+```
+
 ## PyPi publish checklist
 
 Ref: [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-publish-python-packages-to-pypi-using-poetry-on-ubuntu-22-04)
@@ -79,12 +91,13 @@ Ref: [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-pub
 * [ ] Bump version
   * [ ] `pyproject.toml`
   * [ ] `src/beancount_multitool/__version__.py`
-  * [ ] Update [changelog](changelog.md)
+  * [ ] Update [changelog](changelog.md) in the documentation.
 * [ ] Run local tests and coverage.
   * [ ] Update coverage number in project `README.md`.
-* [ ] `git commit`
-  * [ ] Check that the [test](../../.github/workflows/tests.yml) GitHub Action succeed.
-  * [ ] Docs are build with a [GitHub Action](../../.github/workflows/docs.yml).
-* [ ] `git tag -a v0.5.0 -m "v0.5.0"`
+* [ ] Update documentation, if necessary
+    * [ ] Build documentation and check for warnings and errors.
+* [ ] `git commit` and `git push`.
+  * [ ] [Check](https://github.com/rlan/beancount-multitool/actions) that tests and deploy docs actions succeeded on GitHub Action.
+* [ ] Tag the new version: `git tag -a v0.5.0 -m "v0.5.0"`
 * [ ] `poetry build`
 * [ ] `poetry publish`

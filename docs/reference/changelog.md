@@ -1,5 +1,11 @@
 # Changelog
 
+0.7.1
+
+* JA Bank transaction file does not contain a year. Read year from the configuration file instead of the current year.
+* Fix warnings for missing links from mkdocs.
+* Update developer section in the documentation.
+
 0.7.0
 
 * Supports Chase Sapphire Preferred Card.
