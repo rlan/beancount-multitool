@@ -1,12 +1,32 @@
-[tool.poetry]
+[project]
 name = "beancount-multitool"
-version = "0.7.1"
+dynamic = [ "classifiers", "version" ]
 description = "A CLI tool that converts financial data to Beancount files"
-authors = ["Rick Lan <rlan@users.noreply.github.com>"]
-license = "MIT"
+authors = [{ name = "Rick Lan", email = "rlan@users.noreply.github.com" }]
+license = { text = "MIT" }
 readme = "README.md"
 packages = [{include = "beancount_multitool", from = "src"}]
+requires-python = ">=3.9"
+dependencies = [
+  "pandas>=2.2.2",
+  "click>=8.1.7",
+  "tqdm>=4.66.4",
+]
+
+[tool.poetry.dependencies]
+tomli = { version = "^2.0.1", python = "<3.11" }
+
+[project.urls]
+homepage = "https://github.com/rlan/beancount-multitool"
 repository = "https://github.com/rlan/beancount-multitool"
+documentation = "https://rlan.github.io/beancount-multitool/"
+"Bug Tracker" = "https://github.com/rlan/beancount-multitool/issues"
+
+[project.scripts]
+bean-mt = "beancount_multitool.cli:main"
+
+[tool.poetry]
+version = "0.7.1"
 classifiers = [
   "Development Status :: 4 - Beta",
   "Framework :: Pytest",
@@ -27,20 +47,10 @@ classifiers = [
   "Topic :: Utilities",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-pandas = "^2.2.2"
-click = "^8.1.7"
-tomli = { version = "^2.0.1", python = "<3.11" }
-tqdm = "^4.66.4"
-
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0"
 pytest-cov = "^4.0"
 mkdocs-material = {extras = ["imaging"], version = "^9.5.24"}
-
-[tool.poetry.scripts]
-bean-mt = "beancount_multitool.cli:main"
 
 [tool.pytest.ini_options]
 addopts = [
@@ -49,7 +59,7 @@ addopts = [
 pythonpath = "src"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff.lint]
