@@ -2,22 +2,18 @@
 
 ## Prerequisites
 
-Python 3.9, 3.10, 3.11 or 3.12.
+Python 3.9, 3.10, 3.11, 3.12 or 3.13.
 
-All of these versions are tested via [CI/CD]. Due to use of [removeprefix()][], not compatible with previous versions of Python.
+All of these versions are tested via [CI/CD]. Due to use of [removeprefix()], not compatible with previous versions of Python.
 
 ## Installation
 
-First, update `pip`:
+First, install [pipx]:
+
+Then:
 
 ```sh
-pip install -U pip
-```
-
-Then install:
-
-```sh
-pip install beancount-multitool
+pipx install beancount-multitool
 ```
 
 ## Try it out!
@@ -52,3 +48,4 @@ Options:
 
 [removeprefix()]: https://docs.python.org/3/library/stdtypes.html#str.removeprefix
 [CI/CD]: https://github.com/rlan/beancount-multitool/actions/workflows/tests.yml
+[pipx]: https://github.com/pypa/pipx
