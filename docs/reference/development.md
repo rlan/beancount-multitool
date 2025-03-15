@@ -32,12 +32,6 @@ Install
     brew install ruff
     ```
 
-* [mkdocs](https://www.mkdocs.org/)
-
-    ```sh
-    pip install mkdocs
-    ```
-
 Similar to this [setup](https://github.com/Hasenpfote/python-poetry-example), but no tox and uses ruff.
 
 ## Procedure
