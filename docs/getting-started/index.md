@@ -8,7 +8,7 @@ All of these versions are tested via [CI/CD]. Due to use of [removeprefix()], no
 
 ## Installation
 
-First, install [pipx]:
+First, install [pipx] (not pip):
 
 Then:
 
@@ -45,6 +45,17 @@ Options:
   'rakuten_card', 'shinsei_bank', 'sumishin_net_bank']
 ```
 
+## Update to a new version
+
+```sh
+pipx upgrade beancount-multitool
+```
+
+## Uninstallation
+
+```sh
+pipx uninstall beancount-multitool
+```
 
 [removeprefix()]: https://docs.python.org/3/library/stdtypes.html#str.removeprefix
 [CI/CD]: https://github.com/rlan/beancount-multitool/actions/workflows/tests.yml
